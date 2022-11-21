@@ -1,0 +1,55 @@
+string intToRoman(int num) {
+        string s = "";
+        int l = (to_string(num)).length();
+        int n =((to_string(num))[0] - '0');
+        switch(l) {
+            case 1: {
+                if (num < 4)
+                    s.insert(0, num, 'I');
+                else if (num == 4) 
+                    s += "IV";
+                else if (num < 9) {
+                    s += "V";
+                    s.insert(1, num - 5, 'I');
+                }
+                else  
+                    s += "IX";
+                break;
+                }
+            case 2: {
+                if (n < 4)
+                      s.insert(0, n, 'X');
+                else if (n == 4) 
+                    s += "XL";
+                else if (n < 9) {
+                    s += "L";
+                    s.insert(1, n - 5, 'X');
+                }
+                else  
+                    s += "XC";
+                s += intToRoman((to_string(num))[1] - '0');
+                break;
+            }
+            case 3: {
+                if (n < 4)
+                      s.insert(0, n, 'C');
+                else if (n == 4) 
+                    s += "CD";
+                else if (n < 9) {
+                    s += "D";
+                    s.insert(1, n - 5, 'C');
+                }
+                else  
+                    s += "CM";
+                s += intToRoman(stoi((to_string(num)).substr(1, 2)));
+                break;
+            }
+            case 4: {
+                s.insert(0, n, 'M');
+                s += intToRoman(stoi((to_string(num)).substr(1, 3)));
+                break;
+            }
+            
+        }
+        return s;
+    }
